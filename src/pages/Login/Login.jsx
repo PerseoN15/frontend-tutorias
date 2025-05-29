@@ -3,8 +3,11 @@ import './Login.css';
 import { useNavigate, Link } from 'react-router-dom';
 import { login } from "../../services/authService";
 import { useAuth } from '../../context/AuthContext';
+import ReCAPTCHA from "react-google-recaptcha";
 
 function Login() {
+  const [captchaToken, setCaptchaToken] = useState(null);
+  const [captchaValido, setCaptchaValido] = useState(false);
   const navigate = useNavigate();
   const { login: guardarSesion } = useAuth();
 
@@ -43,9 +46,14 @@ function Login() {
       return;
     }
 
+    if (!captchaValido || !captchaToken) {
+      setErrores({ general: "Completa el captcha para continuar" });
+      return;
+    }
+
     setIsSubmitting(true);
     try {
-      const data = await login(formData.nombre, formData.contraseña);
+      const data = await login(formData.nombre, formData.contraseña, captchaToken);
       console.log("✅ Sesión iniciada:", data);
       guardarSesion(data);
       navigate('/PaginaPrincipal');
@@ -110,6 +118,19 @@ function Login() {
               ¿Olvidaste tu contraseña?
             </Link>
           </div>
+
+          <ReCAPTCHA
+            sitekey="6LdLX04rAAAAAO2owXiSR88kYywL1AIyTyIr_3gx"
+            onChange={(token) => {
+              setCaptchaToken(token);
+              setCaptchaValido(true);
+            }}
+            onExpired={() => {
+              setCaptchaToken(null);
+              setCaptchaValido(false);
+            }}
+          />
+          {!captchaValido && <p className="error">Completa el captcha</p>}
 
           <button type="submit" disabled={isSubmitting} className="login-button">
             {isSubmitting ? (

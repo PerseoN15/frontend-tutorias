@@ -1,16 +1,20 @@
 import API from "./api";
 
-// ✅ Login
-export const login = async (nombre, contraseña) => {
+export const login = async (nombre, contraseña, captchaToken) => {
   try {
-    const response = await API.post("/auth/login", { nombre, contraseña });
+    const response = await API.post("/auth/login", {
+      nombre,
+      contraseña,
+      captchaToken, 
+    });
     return response.data;
   } catch (error) {
     throw error.response?.data?.message || "Error al iniciar sesión";
   }
 };
 
-// ✅ Register
+
+
 export const register = async ({ nombre, contraseña }) => {
   try {
     const response = await API.post("/auth/register", { nombre, contraseña });
