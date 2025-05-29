@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://backend-tutorias.cleverapps.io/api", 
+baseURL: "https://backend-tutorias-itsj-2.onrender.com/api",
+
   headers: {
     "Content-Type": "application/json",
   },
