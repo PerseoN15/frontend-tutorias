@@ -1,0 +1,13 @@
+.barra-busqueda {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.input-busqueda {
+  width: 60%;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}

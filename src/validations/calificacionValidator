@@ -1,0 +1,5 @@
+
+export function validarCalificacion(valor) {
+  const numero = Number(valor);
+  return Number.isInteger(numero) && numero >= 1 && numero <= 100;
+}

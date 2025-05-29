@@ -1,0 +1,77 @@
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(to bottom, #fdfcfb, #e2d1c3);
+  min-height: 100vh;
+  text-align: center;
+}
+
+.hero {
+  max-width: 800px;
+  margin-bottom: 3rem;
+}
+
+.titulo-principal {
+  font-size: 2.5rem;
+  color: #800020;
+  margin-bottom: 1rem;
+}
+
+.descripcion {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 2rem;
+}
+
+.botones-acciones .btn {
+  padding: 0.8rem 2rem;
+  margin: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.btn-login {
+  background-color: #800020;
+  color: white;
+}
+
+.btn-registro {
+  background-color: #ffffff;
+  color: #800020;
+  border: 2px solid #800020;
+}
+
+.btn-login:hover, .btn-registro:hover {
+  transform: scale(1.05);
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.feature-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  max-width: 300px;
+  transition: transform 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card h3 {
+  color: #800020;
+  margin-bottom: 0.5rem;
+}

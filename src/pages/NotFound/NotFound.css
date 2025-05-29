@@ -1,0 +1,256 @@
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.notfound-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f9f5f0 0%, #e8e1d9 100%);
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.error-content {
+  z-index: 2;
+  animation: bounce 3s infinite ease-in-out;
+}
+
+.number-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.number-4, .number-0 {
+  font-size: 12rem;
+  font-weight: 900;
+  color: #800020;
+  text-shadow: 5px 5px 0 rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.number-4 {
+  animation: blink 2s infinite;
+}
+
+.second-4 {
+  animation: blink 2s infinite 0.5s;
+}
+
+.number-0 {
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  border: 15px solid #800020;
+  margin: 0 1.5rem;
+  animation: spin 10s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zero-inner {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f9f5f0 0%, #e8e1d9 100%);
+  box-shadow: inset 5px 5px 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.error-message {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+.btn-volver {
+  background-color: #800020;
+  color: white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(128, 0, 32, 0.3);
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn-volver:hover {
+  background-color: #a0002a;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(128, 0, 32, 0.4);
+}
+
+.btn-volver:active {
+  transform: translateY(1px);
+}
+
+/* Astronaut Animation */
+.astronaut {
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  width: 100px;
+  height: 150px;
+  animation: float 6s infinite ease-in-out;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+.head {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border-radius: 50%;
+  border: 3px solid #ccc;
+}
+
+.body {
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 60px;
+  background-color: white;
+  border-radius: 10px;
+  border: 3px solid #ccc;
+}
+
+.panel {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 30px;
+  height: 20px;
+  background-color: #333;
+  border-radius: 5px;
+}
+
+.arm {
+  position: absolute;
+  top: 60px;
+  width: 20px;
+  height: 40px;
+  background-color: white;
+  border: 3px solid #ccc;
+}
+
+.left-arm {
+  left: 15px;
+  border-radius: 10px 0 0 10px;
+  animation: float-arm 3s infinite ease-in-out;
+}
+
+.right-arm {
+  right: 15px;
+  border-radius: 0 10px 10px 0;
+  animation: float-arm 3s infinite ease-in-out 1.5s;
+}
+
+.leg {
+  position: absolute;
+  top: 110px;
+  width: 20px;
+  height: 40px;
+  background-color: white;
+  border: 3px solid #ccc;
+}
+
+.left-leg {
+  left: 25px;
+  border-radius: 0 0 10px 10px;
+  animation: float-leg 4s infinite ease-in-out;
+}
+
+.right-leg {
+  right: 25px;
+  border-radius: 0 0 10px 10px;
+  animation: float-leg 4s infinite ease-in-out 2s;
+}
+
+.backpack {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 40px;
+  background-color: #800020;
+  border-radius: 5px;
+  z-index: -1;
+}
+
+@keyframes float-arm {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(15deg); }
+}
+
+@keyframes float-leg {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(10deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .number-4, .number-0 {
+    font-size: 8rem;
+  }
+  
+  .number-0 {
+    width: 8rem;
+    height: 8rem;
+    border-width: 10px;
+  }
+  
+  .zero-inner {
+    width: 5rem;
+    height: 5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  .astronaut {
+    display: none;
+  }
+}

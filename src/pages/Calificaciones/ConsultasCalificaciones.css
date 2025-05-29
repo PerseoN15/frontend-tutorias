@@ -1,0 +1,33 @@
+.consultas-container {
+  padding: 1rem;
+}
+
+.consultas-filtros {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.consultas-filtros input {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  flex: 1;
+}
+
+.tabla-consultas {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.tabla-consultas th,
+.tabla-consultas td {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.tabla-consultas th {
+  background-color: #f2f2f2;
+}

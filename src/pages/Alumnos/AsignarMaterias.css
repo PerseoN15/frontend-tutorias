@@ -1,0 +1,505 @@
+/* AsignarMaterias.css */
+:root {
+  --color-primary: #800020;       /* Color guindo principal */
+  --color-primary-light: #a83252; /* Guindo más claro */
+  --color-primary-dark: #500014;  /* Guindo más oscuro */
+  --color-secondary: #4a6fa5;     /* Azul para acentos */
+  --color-accent: #ff6b6b;        /* Rojo para acciones */
+  --color-text: #333333;         /* Texto principal */
+  --color-text-light: #666666;   /* Texto secundario */
+  --color-bg: #f8f9fa;          /* Fondo general */
+  --color-card: #fff;           /* Fondo de tarjetas */
+  --color-border: #e0e0e0;     /* Bordes sutiles */
+  --color-success: #28a745;    /* Verde para éxito */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.asignar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  min-height: 100vh;
+}
+
+/* Header Section */
+.header-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.header-section h2 {
+  color: var(--color-primary);
+  font-size: 1.8rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-volver {
+  position: absolute;
+  left: 0;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.btn-volver:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Alumno Info */
+.alumno-info {
+  background-color: var(--color-card);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+  animation: fadeIn 0.5s ease;
+}
+
+.alumno-info h3 {
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.alumno-info p {
+  color: var(--color-text-light);
+}
+
+/* Materias Grid */
+.materias-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.materias-disponibles, .materias-seleccionadas {
+  background-color: var(--color-card);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.materias-disponibles h4, .panel-header h4 {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* Estilos específicos para las tarjetas de materias */
+.materia-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: grab;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.materia-card.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Efecto de borde sutil al hover */
+.materia-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-left: 4px solid var(--color-primary);
+}
+
+/* Tarjeta seleccionada */
+.materia-card.selected {
+  background-color: #f8f9fa;
+  cursor: not-allowed;
+  position: relative;
+}
+
+/* Indicador visual de selección */
+.materia-card.selected::after {
+  content: "✓";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: var(--color-success);
+  font-size: 1.2rem;
+}
+
+/* Tarjeta siendo arrastrada */
+.materia-card.dragging {
+  opacity: 0.8;
+  transform: scale(0.98);
+  box-shadow: 0 0 0 2px var(--color-primary-light);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Contenido de la tarjeta */
+.card-header {
+  margin-bottom: 0.5rem;
+}
+
+.card-header h5 {
+  color:blanchedalmond;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+/* Badge de semestre mejorado */
+.semestre-badge {
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  background-color: rgba(168, 50, 82, 0.1);
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+/* Panel de materias seleccionadas */
+.materias-seleccionadas {
+  min-height: 300px;
+  transition: var(--transition);
+  border: 2px dashed var(--color-border);
+}
+
+.materias-seleccionadas.active {
+  border-color: var(--border);
+  background-color: rgba(168, 50, 82, 0.05);
+}
+
+.materias-seleccionadas.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.counter {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  background-color: var(--color-bg);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* Tarjetas seleccionadas en el panel derecho */
+.selected-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  animation: fadeIn 0.3s ease;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 0.5rem;
+  transition: var(--transition);
+}
+
+.selected-card:hover {
+  background-color: #f9f9f9;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content span:first-child {
+  color: var(--color-primary);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.card-content .semestre {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  margin-top: 0.2rem;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 0.25rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.remove-btn:hover {
+  background-color: rgba(231, 76, 60, 0.1);
+  transform: scale(1.1);
+}
+
+/* Drop Area */
+.drop-message {
+  text-align: center;
+  color: var(--color-text-light);
+  animation: pulse 2s infinite;
+}
+
+.drop-icon {
+  position: relative;
+  margin-top: 1rem;
+  color: var(--color-primary);
+}
+
+.drop-icon .icon {
+  font-size: 2rem;
+}
+
+.drop-icon .arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  animation: slideRight 1.5s infinite;
+}
+
+/* Botón de asignar */
+.btn-asignar {
+  display: block;
+  margin: 2rem auto 0;
+  padding: 1rem 2rem;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-asignar:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-asignar:active {
+  transform: translateY(0);
+}
+
+.btn-asignar.disabled {
+  background-color: var(--color-border);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+/* Estilos para el Toast personalizado */
+.toast-custom {
+  padding: 0;
+  width: 100%;
+}
+
+.toast-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  background: var(--color-success);
+  color: white;
+  border-radius: 4px 4px 0 0;
+}
+
+.toast-icon {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+.toast-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.toast-body {
+  padding: 15px;
+  background: white;
+  color: var(--color-text);
+  border-radius: 0 0 4px 4px;
+}
+
+.toast-body p {
+  margin: 5px 0;
+}
+
+.materias-list {
+  margin: 10px 0 0 0;
+  padding-left: 20px;
+}
+
+.materias-list li {
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.materia-nombre {
+  font-weight: 500;
+}
+
+.materia-semestre {
+  color: var(--color-text-light);
+  font-size: 0.9em;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+@keyframes slideRight {
+  0% { transform: translate(-50%, -50%) translateX(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translate(-50%, -50%) translateX(40px); opacity: 0; }
+}
+
+@keyframes bounceIn {
+  from, 20%, 40%, 60%, 80%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  0% {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  40% {
+    transform: scale3d(.9, .9, .9);
+  }
+  60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+  80% {
+    transform: scale3d(.97, .97, .97);
+  }
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.Toastify__bounce-enter--top-center {
+  animation: bounceIn 0.8s both;
+}
+
+.Toastify__toast--success {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .materias-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  
+  .header-section h2 {
+    font-size: 1.4rem;
+  }
+  
+  .btn-volver {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  
+  .header-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}.materia-desactivada {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+  background-color: #ccc;
+  border: 1px dashed #999;
+}

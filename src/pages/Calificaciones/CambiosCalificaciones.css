@@ -1,0 +1,39 @@
+.cambios-container {
+  padding: 1rem;
+}
+
+.tabla-cambios {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.tabla-cambios th,
+.tabla-cambios td {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.tabla-cambios th {
+  background-color: #f2f2f2;
+}
+
+.tabla-cambios button {
+  padding: 0.4rem 0.75rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tabla-cambios button:hover {
+  background-color: #0056b3;
+}
+
+.tabla-cambios input {
+  width: 60px;
+  padding: 0.3rem;
+  text-align: center;
+}

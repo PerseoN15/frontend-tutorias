@@ -1,0 +1,373 @@
+/* Estilos base */
+:root {
+  --color-primario: #6a1b9a;
+  --color-primario-claro: #9c4dcc;
+  --color-primario-oscuro: #38006b;
+  --color-fondo: #f5f3f7;
+  --color-texto: #333;
+  --color-borde: #d1c4e9;
+  --color-exito: #4caf50;
+  --color-peligro: #f44336;
+  --color-advertencia: #ff9800;
+  --color-info: #2196f3;
+  --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --sombra-hover: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.tutores-container {
+  padding: 2rem;
+  background-color: var(--color-fondo);
+  min-height: 100vh;
+}
+
+/* Header */
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.titulo-seccion {
+  color: var(--color-primario-oscuro);
+  font-size: 2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icono-titulo {
+  font-size: 1.8rem;
+}
+
+.acciones-principales {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Botones */
+.btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  box-shadow: var(--sombra);
+}
+
+.btn-agregar {
+  background-color: var(--color-primario);
+  color: white;
+}
+
+.btn-agregar:hover {
+  background-color: var(--color-primario-claro);
+}
+
+.btn-buscar {
+  background-color: var(--color-info);
+  color: white;
+}
+
+.btn-cancelar {
+  background-color: #757575;
+  color: white;
+}
+
+.btn-guardar {
+  background-color: var(--color-primario);
+  color: white;
+}
+
+/* Búsqueda */
+.busqueda-container {
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.input-busqueda {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--color-borde);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input-busqueda:focus {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(106, 27, 154, 0.2);
+}
+
+/* Tarjetas de tutores */
+.tarjetas-container {
+  margin-top: 1.5rem;
+}
+
+.grid-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.tarjeta-tutor {
+  background-color: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--sombra);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tarjeta-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.foto-tutor {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.foto-tutor img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info-principal {
+  flex-grow: 1;
+}
+
+.info-principal h3 {
+  color: var(--color-primario-oscuro);
+  margin-bottom: 0.25rem;
+}
+
+.correo {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.menu-acciones {
+  position: relative;
+}
+
+.btn-menu {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.btn-menu:hover {
+  background-color: #f0f0f0;
+  color: var(--color-primario);
+}
+
+.menu-opciones {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  overflow: hidden;
+  min-width: 120px;
+}
+
+.opcion-menu {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.opcion-menu:hover {
+  background-color: #f5f5f5;
+}
+
+.opcion-editar {
+  color: var(--color-advertencia);
+}
+
+.opcion-eliminar {
+  color: var(--color-peligro);
+}
+
+.tarjeta-detalles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.detalle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.icono-detalle {
+  color: var(--color-primario);
+}
+
+.sin-resultados {
+  text-align: center;
+  padding: 2rem;
+  color: #757575;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.modal-container {
+  background-color: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-container h3 {
+  color: var(--color-primario);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-texto);
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--color-borde);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(106, 27, 154, 0.2);
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Cargando */
+.cargando-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  gap: 1rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid var(--color-primario);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .header-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .modal-container {
+    width: 95%;
+    padding: 1.5rem;
+  }
+  
+  .grid-tarjetas {
+    grid-template-columns: 1fr;
+  }
+}
